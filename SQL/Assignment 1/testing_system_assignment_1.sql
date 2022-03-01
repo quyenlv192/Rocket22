@@ -7,7 +7,7 @@ CREATE TABLE Department (
     PRIMARY KEY (DepartmentID)
 );
 
-CREATE TABLE Position (
+CREATE TABLE `Position` (
     PositionID INT NOT NULL AUTO_INCREMENT,
     PositionName ENUM('Dev', 'Test', 'Scrum Master', 'PM'),
     PRIMARY KEY (PositionID)
@@ -21,7 +21,11 @@ CREATE TABLE Account (
     DepartmentID INT NOT NULL,
     PositionID INT NOT NULL,
     CreateDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    PRIMARY KEY (AccountID)
+    PRIMARY KEY (AccountID),
+    FOREIGN KEY (DepartmentID)
+        REFERENCES Department (DepartmentID),
+    FOREIGN KEY (PositionID)
+        REFERENCES `Position` (PositionID)
 );
 
 CREATE TABLE `Group` (
@@ -29,14 +33,16 @@ CREATE TABLE `Group` (
     GroupName VARCHAR(100),
     CreatorID INT NOT NULL,
     CreateDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    PRIMARY KEY (GroupID)
+    CONSTRAINT PK_Group PRIMARY KEY (GroupID , CreatorID)
 );
 
 CREATE TABLE GroupAccount (
     GroupID INT NOT NULL AUTO_INCREMENT,
     AccountID INT NOT NULL,
     JoinDate DATETIME,
-    PRIMARY KEY (GroupID)
+    PRIMARY KEY (GroupID),
+    FOREIGN KEY (AccountID)
+        REFERENCES Account (AccountID)
 );
 
 CREATE TABLE TypeQuestion (
@@ -58,7 +64,13 @@ CREATE TABLE Question (
     TypeID INT NOT NULL,
     CreatorID INT NOT NULL,
     CreateDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    PRIMARY KEY (QuestionID)
+    PRIMARY KEY (QuestionID),
+    FOREIGN KEY (CategoryID)
+        REFERENCES categoryQuestion (CategoryID),
+    FOREIGN KEY (TypeID)
+        REFERENCES TypeQuestion (TypeID),
+    FOREIGN KEY (CreatorID)
+        REFERENCES `Group` (CreatorID)
 );
 
 CREATE TABLE answer (
@@ -66,7 +78,9 @@ CREATE TABLE answer (
     Content VARCHAR(255),
     QuestionID INT NOT NULL,
     isCorrect BOOLEAN,
-    PRIMARY KEY (AnswerID)
+    PRIMARY KEY (AnswerID),
+    FOREIGN KEY (QuestionID)
+        REFERENCES Question (QuestionID)
 );
 
 CREATE TABLE Exam (
@@ -83,7 +97,11 @@ CREATE TABLE Exam (
 CREATE TABLE ExamQuestion (
     ExamID INT NOT NULL,
     QuestionID INT NOT NULL,
-    PRIMARY KEY (ExamID)
+    PRIMARY KEY (ExamID),
+    FOREIGN KEY (CategoryID)
+        REFERENCES categoryQuestion (CategoryID),
+    FOREIGN KEY (CreatorID)
+        REFERENCES `Group` (CreatorID)
 ); 
 
 
