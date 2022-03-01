@@ -36,7 +36,7 @@ CREATE TABLE GroupAccount (
     GroupID INT NOT NULL AUTO_INCREMENT,
     AccountID INT NOT NULL,
     JoinDate DATETIME,
-    CONSTRAINT PK_GroupAcount PRIMARY KEY (GroupID , AccountID)
+    PRIMARY KEY (GroupID)
 );
 
 CREATE TABLE TypeQuestion (
@@ -58,7 +58,7 @@ CREATE TABLE Question (
     TypeID INT NOT NULL,
     CreatorID INT NOT NULL,
     CreateDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT PK_Question PRIMARY KEY (QuestionID , CategoryID , TypeID , CreatorID)
+    PRIMARY KEY (QuestionID)
 );
 
 CREATE TABLE answer (
@@ -66,7 +66,7 @@ CREATE TABLE answer (
     Content VARCHAR(255),
     QuestionID INT NOT NULL,
     isCorrect BOOLEAN,
-    CONSTRAINT answer_pk PRIMARY KEY (AnswerID , QuestionID)
+    PRIMARY KEY (AnswerID)
 );
 
 CREATE TABLE Exam (
@@ -77,13 +77,13 @@ CREATE TABLE Exam (
     Duration VARCHAR(100),
     CreatorID INT NOT NULL,
     CreateDate DATETIME,
-    CONSTRAINT exam_pk PRIMARY KEY (ExamID , CategoryID , CreatorID)
+    PRIMARY KEY (ExamID)
 );
 
 CREATE TABLE ExamQuestion (
     ExamID INT NOT NULL,
     QuestionID INT NOT NULL,
-    CONSTRAINT exam_question_pk PRIMARY KEY (ExamID , QuestionID)
+    PRIMARY KEY (ExamID)
 ); 
 
 
