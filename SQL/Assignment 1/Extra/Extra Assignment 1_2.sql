@@ -17,18 +17,18 @@ CREATE TABLE Trainee (
 
 -- Exercise 2: Data type
 /*
-  ID mediumint not null auto_increment,
-  Name char(150)
+  ID tinyint not null auto_increment,
+  Name varchar(150)
   Code char(5),
   ModifiedDate timestamp default current_timestamp,
   primary key(ID)
 */
 
--- Exercise 3: Data type (2)
+-- Exercise 3: Data type(2)
 /*
-  ID mediumint not null auto_increment,
-  Name varchar(150),
-  BirthDate date
+  ID tinyint not null auto_increment,
+  Name nvarchar(150),
+  BirthDate date,
   Gender enum('male', 'female', 'unknown'),
   isDeletedFlag boolean,
   primary key (ID)
