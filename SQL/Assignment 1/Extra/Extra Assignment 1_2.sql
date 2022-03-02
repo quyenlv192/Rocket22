@@ -19,11 +19,11 @@ CREATE TABLE Trainee (
 	add VTI_Account varchar(255) not null;
 
 	alter table trainee
-	add unique (VTI_Account);
+	add unique key (VTI_Account);
 
 -- Exercise 2: Data type
 /*
-  ID tinyint not null auto_increment,
+  ID mediumint not null auto_increment,
   Name varchar(150)
   Code char(5),
   ModifiedDate timestamp default current_timestamp,
@@ -32,7 +32,7 @@ CREATE TABLE Trainee (
 
 -- Exercise 3: Data type(2)
 /*
-  ID tinyint not null auto_increment,
+  ID mediumint not null auto_increment,
   Name nvarchar(150),
   BirthDate date,
   Gender enum('male', 'female', 'unknown'),
