@@ -15,6 +15,12 @@ CREATE TABLE Trainee (
     PRIMARY KEY (TraineeID)
 );
 
+	alter table trainee 
+	add VTI_Account varchar(255) not null;
+
+	alter table trainee
+	add unique (VTI_Account);
+
 -- Exercise 2: Data type
 /*
   ID tinyint not null auto_increment,
