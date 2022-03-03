@@ -8,18 +8,21 @@ CREATE TABLE Trainee (
     Birth_Date DATE,
     Gender ENUM('male', 'female', 'unknown'),
     ET_IQ INT,
+    CHECK (ET_IQ > 0 AND ET_IQ <= 20),
     ET_Gmath INT,
+    CHECK (ET_Gmath > 0 AND ET_Gmath <= 20),
     ET_English INT,
+    CHECK (ET_English > 0 AND ET_English <= 50),
     Training_Class CHAR(50),
     Evaluation_Notes VARCHAR(255),
     PRIMARY KEY (TraineeID)
 );
 
-	alter table trainee 
-	add VTI_Account varchar(255) not null;
+	ALTER TABLE trainee 
+	ADD VTI_Account VARCHAR(255) NOT NULL;
 
-	alter table trainee
-	add unique key (VTI_Account);
+	ALTER TABLE trainee
+	ADD UNIQUE KEY (VTI_Account);
 
 -- Exercise 2: Data type
 /*

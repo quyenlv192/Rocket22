@@ -83,6 +83,7 @@ CREATE TABLE answer (
         REFERENCES Question (QuestionID)
 );
 
+
 CREATE TABLE Exam (
     ExamID INT NOT NULL AUTO_INCREMENT,
     Code CHAR(10),
@@ -103,5 +104,8 @@ CREATE TABLE ExamQuestion (
     FOREIGN KEY (CreatorID)
         REFERENCES `Group` (CreatorID)
 ); 
+
+
+
 
 
