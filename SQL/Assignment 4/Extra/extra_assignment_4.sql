@@ -103,16 +103,14 @@ insert into employee_skill (Employee_Number, Skill_Code) values (1, 'Java'),
                                                                 (13, 'Postman');
 												
 -- Question 3
-SELECT 
-    Employee_Name
+    SELECT 
+    e.Employee_Number, e.Employee_Name
 FROM
-    employee 
-UNION SELECT 
-    Skill_Code
-FROM
-    employee_skill
+    employee e
+        JOIN
+    employee_skill es ON e.Employee_Number = es.Employee_Number
 WHERE
-    Skill_Code = 'Java';
+    es.Skill_Code = 'Java';
 -- Question 4
 SELECT 
     d.Department_Number,
