@@ -74,5 +74,5 @@ BEGIN
 
 
 -- print 
-signal sqlstate '45000' set message_text = concat('So luong ban da remove tu project la ', countRemove);
+signal sqlstate '12345' set message_text = concat('So luong ban da remove tu project la ', countRemove);
 
