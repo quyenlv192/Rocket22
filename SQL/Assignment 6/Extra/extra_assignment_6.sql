@@ -64,8 +64,15 @@ WHERE
 END &&
 DELIMITER ;
 
--- c)
-DROP PROCEDURE IF EXISTS print_current_module;
-CREATE PROCEDURE print_current_module() 
+-- c) truyền module lấy 
+DROP PROCEDURE IF EXISTS print_project_not_complete;
+CREATE PROCEDURE print_project_not_complete(in project_id tinyint ) 
 BEGIN 
-	
+
+
+
+
+
+-- print 
+signal sqlstate '45000' set message_text = concat('So luong ban da remove tu project la ', countRemove);
+
